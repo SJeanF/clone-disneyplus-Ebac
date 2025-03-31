@@ -1,0 +1,164 @@
+@use 'variaveis';
+@use 'hero';
+@use 'shows';
+@use 'plans';
+@use 'available_devices';
+@use 'faq';
+@use 'footer';
+@use 'header';
+@use 'sass:color';
+
+@font-face {
+    font-family: Avenir;
+    src: url(../../assets/fonts/Avenir-Regular.woff2);
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: Avenir;
+    src: url(../../assets/fonts/Avenir-Bold.woff2);
+    font-weight: 700;
+}
+
+@mixin title($fontSize: 28px) {
+    @include text($fontSize);
+    color: variaveis.$corTextoSecundario;
+}
+
+@mixin text($fontSize: 16px) {
+    font-size: $fontSize;
+    line-height: $fontSize + 10px;
+    color: variaveis.$corTextoPrincipal;
+}
+
+.text--big {
+    @include text(18px);
+}
+
+.text {
+    @include text;
+}
+
+.text--small {
+    @include text(12px);
+}
+
+.link-text {
+    @include text(18px);
+    color: variaveis.$corTextoSecundario;
+    text-decoration: underline;
+}
+
+.title--big {
+    @include title(44px);
+}
+
+.title {
+    @include title(40px);
+}
+
+.title--small {
+    @include title;
+}
+
+.button {
+    // display: block;
+    width: 100%;
+    height: 60px;
+    font-size: 18px;
+    color: variaveis.$corTextoSecundario;
+    background-color: variaveis.$corDeFundoBotaoPrimario;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 8px 14px;
+    letter-spacing: 1px;
+    border: 1px solid variaveis.$corDeFundo;
+    cursor: pointer;
+    
+    :only-child {
+        text-decoration: none;
+        color: variaveis.$corTextoSecundario;;
+    }
+
+    &:hover {
+        background-color: color.adjust(variaveis.$corDeFundoBotaoPrimario, $lightness: 10%);
+    }
+
+    &--secondary {
+        background-color: variaveis.$corDeFundoBotaoSecundario;
+        border-color: variaveis.$corDeFundoBotaoSecundario;
+
+        &:hover {
+            background-color: color.adjust(variaveis.$corDeFundoBotaoSecundario, $lightness: 10%);
+        }
+    }
+
+    &--dark {
+        background-color: variaveis.$corDeFundoBotaoDark;
+        border-color: variaveis.$corTextoSecundario;
+        :only-child {
+            color: variaveis.$corTextoSecundario;
+        }
+
+        &:hover {
+            background-color: variaveis.$corTextoSecundario;
+            :only-child {
+                color: variaveis.$corDeFundo;
+            }
+        }
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Avenir, sans-serif;
+}
+
+body {
+    background-color: variaveis.$corDeFundo;
+}
+
+.image-text-section {
+    padding: 5.6vw;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+
+    @media (max-width:768px) {
+        
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    &__text-container {
+        padding: 0 2vw;
+
+        h2 {
+            margin-bottom: 24px;
+        }
+    }
+
+    &--image-full-width {
+            display: block;
+            position: relative;
+
+        img {
+            width: 100%;
+        }
+
+        &__text-container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: calc(50% - 5.6vw);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+}
