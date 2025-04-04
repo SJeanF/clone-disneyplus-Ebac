@@ -31,6 +31,12 @@
     color: variaveis.$corTextoPrincipal;
 }
 
+.link-text {
+    @include text(18px);
+    color: variaveis.$corTextoSecundario;
+    text-decoration: underline;
+}
+
 .text--big {
     @include text(18px);
 }
@@ -43,12 +49,6 @@
     @include text(12px);
 }
 
-.link-text {
-    @include text(18px);
-    color: variaveis.$corTextoSecundario;
-    text-decoration: underline;
-}
-
 .title--big {
     @include title(44px);
 }
@@ -59,6 +59,32 @@
 
 .title--small {
     @include title;
+}
+
+@media (max-width: 768px) {
+    .text--big {
+        @include text(15px);
+    }
+    
+    .text {
+        @include text(14px);
+    }
+    
+    .text--small {
+        @include text(11px);
+    }
+    
+    .title--big {
+        @include title(26px);
+    }
+    
+    .title {
+        @include title(24px);
+    }
+    
+    .title--small {
+        @include title(22px);
+    }
 }
 
 .button {
@@ -126,9 +152,7 @@ body {
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
 
-    @media (max-width:768px) {
-        
-    }
+    
 
     img {
         max-width: 100%;
@@ -159,6 +183,12 @@ body {
             display: flex;
             flex-direction: column;
             justify-content: center;
+
+            @media (max-width:768px) {
+                position: relative;
+                left: 0;
+                width: 100%;
+            }
         }
     }
 }
